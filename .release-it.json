@@ -1,18 +1,28 @@
-{
-	"plugins": {
-		"@release-it/conventional-changelog": {
-			"preset": "conventionalcommits",
-			"infile": "CHANGELOG.md"
-		}
-	},
-	"git": {
-		"commitMessage": "chore(release): ${version}",
-		"tagName": "v${version}"
-	},
-	"npm": {
-		"publish": false
-	},
-	"github": {
-		"release": true
-	}
-}
+ "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        // 此处可定义需要哪些放至进 CHANGELOG.md 里，
+        // 默认只将 feat、fix写入日志
+        "types": [
+          {
+            "type": "feat",
+            "section": "✨新功能"
+          },
+          {
+            "type": "fix",
+            "section": "🐞问题修复"
+          },
+          {
+            "type": "style",
+            "section": "🌈样式"
+          },
+          {
+            "type": "docs",
+            "section": "📃文档"
+          }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    }
+  },
