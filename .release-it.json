@@ -1,0 +1,16 @@
+{
+	"git": {
+		"tagName": "1.0.0-pre.${version}"
+	},
+	"npm": false,
+	"plugins": {
+		"@release-it/conventional-changelog": {
+			"preset": "conventionalcommits",
+			"infile": "CHANGELOG.md"
+		}
+	},
+	"version": {
+		"increment": "prerelease",
+		"prereleaseId": "pre"
+	}
+}
