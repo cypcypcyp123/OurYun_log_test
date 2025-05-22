@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.0.14 (2025-05-22)</small>
+
+* fix：bug ([c71eebd](https://github.com/cypcypcyp123/OurYun_log_test/commit/c71eebd))
+
 ## <small>1.0.13 (2025-05-22)</small>
 
 * fix;ceshi1 ([f17f632](https://github.com/cypcypcyp123/OurYun_log_test/commit/f17f632))
