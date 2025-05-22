@@ -7,7 +7,7 @@
 	},
 	"git": {
 		"commitMessage": "chore(release): ${version}",
-		"tagName": "v1.0.0-pre.${version}"
+		"tagName": "v${version}"
 	},
 	"npm": {
 		"publish": false
