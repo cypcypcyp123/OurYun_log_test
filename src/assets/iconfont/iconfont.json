@@ -1,0 +1,72 @@
+{
+  "id": "4268621",
+  "name": "Vue3-Ts",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "37128735",
+      "name": "分类",
+      "font_class": "fenlei",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "37128736",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "37128739",
+      "name": "付款",
+      "font_class": "fukuan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "37128741",
+      "name": "兑换",
+      "font_class": "duihuan",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "37128743",
+      "name": "概率",
+      "font_class": "gaishuai",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "37128747",
+      "name": "购物",
+      "font_class": "gouwu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "37128748",
+      "name": "发票",
+      "font_class": "fapiao",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "37128750",
+      "name": "待收货",
+      "font_class": "daishouhuo",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "37128751",
+      "name": "待发货",
+      "font_class": "daifahuo",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    }
+  ]
+}
