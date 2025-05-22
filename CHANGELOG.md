@@ -1,3 +1,10 @@
+# Changelog
+
+## <small>1.0.11 (2025-05-22)</small>
+
+* fix;ceshi1 ([f17f632](https://github.com/cypcypcyp123/OurYun_log_test/commit/f17f632))
+* fix:buig ([f9a3ce7](https://github.com/cypcypcyp123/OurYun_log_test/commit/f9a3ce7))
+
 # 更新历史 
 
 
