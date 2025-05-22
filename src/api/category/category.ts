@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 获取商品分类列表1112333
+// 获取商品分类列表11123331
 export function getCategoryList(){
     return request({
         url: '/category/list',
