@@ -1,9 +1,8 @@
+{
  "plugins": {
     "@release-it/conventional-changelog": {
       "preset": {
         "name": "conventionalcommits",
-        // 此处可定义需要哪些放至进 CHANGELOG.md 里，
-        // 默认只将 feat、fix写入日志
         "types": [
           {
             "type": "feat",
@@ -25,4 +24,5 @@
       },
       "infile": "CHANGELOG.md"
     }
-  },
+  }
+}
