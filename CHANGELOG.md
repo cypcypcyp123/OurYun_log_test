@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.0.15 (2025-05-23)</small>
+
+* add:增加脚本 ([dbff4a6](https://github.com/cypcypcyp123/OurYun_log_test/commit/dbff4a6))
+
 ## <small>1.0.14 (2025-05-22)</small>
 
 * fix：bug ([c71eebd](https://github.com/cypcypcyp123/OurYun_log_test/commit/c71eebd))
