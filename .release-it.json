@@ -1,18 +1,25 @@
 {
   "git": {
     "commitMessage": "chore(release): v${version}",
-    "tagName": "v${version}"
+    "tagName": "v${version}",
+    "requireBranch": false
   },
   "npm": {
-    "publish": false
+    "publish": false,
+    "version": false
   },
   "github": {
-    "release": true
+    "release": true,
+    "preRelease": true
   },
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
-      "infile": "CHANGELOG.md"
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": true
     }
+  },
+  "hooks": {
+    "before:init": "git fetch --tags"
   }
 }
