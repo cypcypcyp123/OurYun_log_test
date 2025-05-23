@@ -9,7 +9,7 @@ const previous = tags[0];
 console.log(`🕐 上一个预发布 tag: ${previous}`);
 
 // Step 2: 执行 release-it 发布新的 pre-release（不带 changelog）
-execSync('npx release-it --preRelease=pre --no-changelog --no-npm.publish --ci', {
+execSync('npx release-it --preRelease=pre --increment=prerelease --no-changelog --no-npm.publish --ci', {
   stdio: 'inherit',
 });
 
