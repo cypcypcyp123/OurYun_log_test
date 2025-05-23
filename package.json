@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"release": "release-it --ci",
+		"release": "release-it",
 		"release:pre": "node pre-release-tags.cjs"
 	},
 	"dependencies": {
