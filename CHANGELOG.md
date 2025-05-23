@@ -6,6 +6,8 @@
 
 ## [1.0.0-pre.1](https://github.com/cypcypcyp123/OurYun_log_test/compare/v1.0.0-pre.0...v1.0.0-pre.1) (2025-05-23)
 
+## [1.0.0-pre.1](https://github.com/cypcypcyp123/OurYun_log_test/compare/v1.0.0-pre.0...v1.0.0-pre.1) (2025-05-23)
+
 * add：版本 (2d73e48)
 * add:更新脚本 (720ae13)
 
