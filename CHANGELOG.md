@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0-pre.6](https://github.com/cypcypcyp123/OurYun_log_test/compare/v1.0.0-pre.5...v1.0.0-pre.6) (2025-05-23)
+
 ## [1.0.0-pre.5](https://github.com/cypcypcyp123/OurYun_log_test/compare/v1.0.0-pre.4...v1.0.0-pre.5) (2025-05-23)
 
 ## [1.0.0-pre.4](https://github.com/cypcypcyp123/OurYun_log_test/compare/v1.0.0-pre.3...v1.0.0-pre.4) (2025-05-23)
