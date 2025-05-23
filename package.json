@@ -7,7 +7,8 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"release": "release-it"
+		"release": "release-it",
+		"release:pre": "TAG_ARG=$(node pre-release-tags.js) && npx release-it --plugin.@release-it/conventional-changelog.tagArgument=$TAG_ARG --no-npm.publish --ci"
 	},
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.1.0",
