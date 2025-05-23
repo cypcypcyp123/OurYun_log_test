@@ -1,7 +1,7 @@
 {
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "./changelog-preset.cjs",
+      "preset": "./pre-release-tags.cjs",
       "infile": "CHANGELOG.md"
     }
   },
