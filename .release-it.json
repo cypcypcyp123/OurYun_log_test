@@ -1,35 +1,15 @@
 {
- "plugins": {
+  "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": {
-        "name": "conventionalcommits",
-        "types": [
-          {
-            "type": "feat",
-            "section": "✨新功能"
-          },
-          {
-            "type": "fix",
-            "section": "🐞问题修复"
-          },
-          {
-            "type": "style",
-            "section": "🌈样式"
-          },
-          {
-            "type": "docs",
-            "section": "📃文档"
-          }
-        ]
-      },
+      "preset": "./changelog-preset.cjs",
       "infile": "CHANGELOG.md"
     }
   },
-	"git": {
+  "git": {
     "commitMessage": "chore(release): ${version}",
     "tagName": "v${version}"
   },
-	"npm": {
+  "npm": {
     "publish": false
   },
   "github": {
