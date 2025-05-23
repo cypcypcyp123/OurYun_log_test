@@ -2,72 +2,39 @@
 const { execSync } = require('child_process');
 
 try {
-  // 先 fetch 远程 tag，确保本地最新
-  console.log('🔄 同步远程 tags...');
-  execSync('git fetch --tags', { stdio: 'inherit' });
-
-  // 用语义版本排序，获取符合预发布格式的 tags，从新到旧排序
-  let preTags = execSync('git tag --list "v*-pre.*" --sort=-version:refname', { encoding: 'utf-8' })
-    .split('\n')
-    .map(t => t.trim())
-    .filter(t => t.length > 0);
-
-  if (preTags.length === 0) {
-    console.log('⚠️ 没有预发布 tag，初始化打一个 v1.0.0-pre.0');
-    execSync('git tag v1.0.0-pre.0');
-    execSync('git push origin v1.0.0-pre.0');
-    // 重新获取一次 tags
-    preTags = ['v1.0.0-pre.0'];
-  }
-
-  if (preTags.length < 2) {
-    // 如果只有一个 tag，手动制造第二个伪“之前”的 tag，防止后续失败
-    console.log('⚠️ 只有一个预发布 tag，临时制造一个比它更早的 tag 用作对比');
-    const onlyTag = preTags[0];
-    // 解析数字，降级一个版本号，比如 v1.0.0-pre.0 -> v0.9.9-pre.0
-    // 简单示范，只降minor版本1
-    const match = onlyTag.match(/v?(\d+)\.(\d+)\.(\d+)-pre\.(\d+)/);
-    let prevTag = 'v0.0.0-pre.0';
-    if (match) {
-      const major = parseInt(match[1]);
-      const minor = parseInt(match[2]);
-      const patch = parseInt(match[3]);
-      if (minor > 0) {
-        prevTag = `v${major}.${minor - 1}.${patch}-pre.0`;
-      } else if (major > 0) {
-        prevTag = `v${major - 1}.0.0-pre.0`;
-      }
-    }
-    console.log(`使用临时对比 tag: ${prevTag}`);
-    preTags.unshift(prevTag);
-  }
-
-  const latestTag = preTags[0];
-  const previousTag = preTags[1];
-  console.log(`🕐 上一个预发布 tag: ${previousTag}`);
-
-  // Step 1: 生成新的预发布版本
+  // Step 1: 先执行 release-it 创建最新的预发布版本（生成新的 pre tag）
   console.log('🚀 执行 release-it 生成新的预发布版本...');
   execSync('npx release-it --preRelease=pre --increment=prerelease --no-changelog --no-npm.publish --ci', { stdio: 'inherit' });
 
-  // Step 2: 重新获取最新的两个预发布 tags
-  const updatedPreTags = execSync('git tag --list "v*-pre.*" --sort=-version:refname', { encoding: 'utf-8' })
+  // Step 2: 获取所有符合预发布格式的 tags，用语义版本排序，从新到旧
+  const preTags = execSync('git tag --list "v*-pre.*" --sort=-version:refname', { encoding: 'utf-8' })
     .split('\n')
     .map(t => t.trim())
     .filter(t => t.length > 0);
 
-  const updatedLatestTag = updatedPreTags[0];
-  const updatedPreviousTag = updatedPreTags[1];
-  console.log(`🆕 新的预发布 tag: ${updatedLatestTag}`);
+  if (preTags.length < 2) {
+    console.error('❌ 需要至少两个符合预发布格式的 tag');
+    process.exit(1);
+  }
 
-  // Step 3: 生成 changelog 对比区间（用..代替...，避免潜在语法歧义）
-  const tagArg = `${updatedPreviousTag}..${updatedLatestTag}`;
+  // Step 3: 取最新的两个预发布 tag，用于 changelog 生成
+  const latestTag = preTags[0];
+  const previousTag = preTags[1];
+  console.log(`🕐 上一个预发布 tag: ${previousTag}`);
+  console.log(`🆕 最新的预发布 tag: ${latestTag}`);
+
+  // Step 4: 生成 changelog 对比区间（用..连接，避免语法歧义）
+  const tagArg = `${previousTag}..${latestTag}`;
   console.log(`🔍 生成 changelog 对比区间: ${tagArg}`);
 
-  // Step 4: 只生成 changelog，跳过 git/tag/push/github
+  // Step 5: 生成 changelog，跳过 git 操作和 npm 发布，避免触发正式版本
   console.log('📝 生成并更新 changelog...');
-  execSync(`npx release-it --no-git.tag --no-git.commit --no-git.push --no-github.release --plugin.@release-it/conventional-changelog.tagArgument=${tagArg} --no-npm.publish --ci`, {
-    stdio: 'inherit'
+  // 用环境变量强制传递 tagArgument，确保生效
+  process.env['RELEASE_IT_CONVENTIONAL_CHANGELOG_TAG_ARGUMENT'] = tagArg;
+
+  execSync('npx release-it --no-git.tag --no-git.commit --no-git.push --no-github.release --no-npm.publish --ci', {
+    stdio: 'inherit',
+    env: process.env
   });
 
   console.log('✅ 预发布流程完成');
